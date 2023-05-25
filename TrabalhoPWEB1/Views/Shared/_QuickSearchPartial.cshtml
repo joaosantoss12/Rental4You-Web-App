@@ -1,0 +1,16 @@
+﻿<!-- 
+@using (Html.BeginForm("Search", "Cursos", FormMethod.Get))
+div input button
+-->
+
+<ul class="navbar-nav">
+    <li>
+        <form method="post" action="/Veiculos/Search">
+            <input type="text" id="pesquisarTexto" name="pesquisarTexto"
+                   placeholder="Ex.: Lamborghini" />
+            <button id="botaoPesquisa" type="submit">
+                🔍
+            </button>
+        </form>
+    </li>
+</ul>

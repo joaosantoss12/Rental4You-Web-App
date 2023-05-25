@@ -1,0 +1,81 @@
+﻿@model TrabalhoPWEB1.Models.Reservas
+
+@{
+    ViewData["Title"] = "Entregar Veiculo";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Entregar Veículo</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EntregarVeiculo">
+            <input type="hidden" asp-for="DuracaoEmHoras" />
+            <input type="hidden" asp-for="DuracaoEmDias" />
+            <input type="hidden" asp-for="PrecoReserva" />
+            <input type="hidden" asp-for="Estado" />
+            <input type="hidden" asp-for="VeiculoId" />
+            <input type="hidden" asp-for="ApplicationUserId" />
+            <input type="hidden" asp-for="veiculoEntregue" />
+            <input type="hidden" asp-for="veiculoRecebido" />
+            <input type="hidden" asp-for="emailFuncionario" />
+            <input type="hidden" asp-for="DataInicioReserva" />
+            <input type="hidden" asp-for="DataFimReserva" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label class="control-label">Número Km do Veículo</label>
+                <input disabled value="@Model.veiculo.nKm" readonly class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label form-label">Danos no Veículo</label>
+                <select asp-for="danosVeiculos"
+                        class="form-control form-select">
+
+                    <option value="Não">Não</option>
+                    <option value="Sim">Sim</option>
+                </select>
+
+            </div>
+
+            <input type="hidden" asp-for="obsCliente">
+
+            <div class="form-group mb-3 flex-column">
+                <label class="control-label">Observações</label>
+                <textarea id="obs" name="obs" rows="4" cols="75">
+
+                </textarea>
+                <span asp-validation-for="obs" class="text-danger"></span>
+            </div>
+            
+
+            <div class="form-group" style="margin-top:1%;">
+                <input type="submit" value="Entregar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrador"))
+{
+    <div style="margin-top:1%;">
+        <a class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+    </div>
+}
+@if (User.Identity.IsAuthenticated && User.IsInRole("Cliente"))
+{
+    <div style="margin-top:1%;">
+        <a class="btn btn-secondary" asp-controller="Veiculos" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+    </div>
+}
+
+<a style="margin-top:2%;" class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

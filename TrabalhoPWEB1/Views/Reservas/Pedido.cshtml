@@ -1,0 +1,49 @@
+﻿@model TrabalhoPWEB1.Models.ViewModels.ReservasViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h4>Pedido de Reserva</h4>
+<hr />
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Calcular">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label value="Veiculo" class="control-label">Veiculo</label>
+                    <select asp-for="VeiculoId" 
+                        class="form-control form-select" 
+                        asp-items="ViewBag.VeiculoId">
+                    </select>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="DataInicioReserva" class="control-label"></label>
+                    <input asp-for="DataInicioReserva" class="form-control" />
+                    <span asp-validation-for="DataInicioReserva" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="DataFimReserva" class="control-label"></label>
+                    <input asp-for="DataFimReserva" class="form-control" />
+                    <span asp-validation-for="DataFimReserva" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="submit" value="Calcular Preço" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="margin-top:1%;">
+        <a class="btn btn-secondary" asp-controller="Veiculos" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+    </div>
+}
+else
+{
+    <p class="alert alert-warning">
+        Só utilizadores autenticados é que podem efetuar agendamentos. Por favor, autentique-se.
+    </p>
+}

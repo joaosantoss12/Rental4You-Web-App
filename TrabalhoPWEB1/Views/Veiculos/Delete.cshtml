@@ -1,0 +1,193 @@
+﻿@model TrabalhoPWEB1.Models.Veiculos
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Apagar Veículo</h1>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Nome)</h4>
+    <hr />
+    <table class="table table-light table-striped-columns table-bordered" style="text-align:center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </th>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Empresa
+                </th>
+                <th>
+                    Avaliação Empresa
+                </th>
+                <th>
+                    Número Km
+                </th>
+                <th>
+                    Preço
+                </th>
+                <th>
+                    Localização
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+                    Ano Produção
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.Marca)
+                </th>
+                <th>
+                   @Html.DisplayFor(model => model.Categoria.Nome)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.Empresa.Nome)
+                </th>
+                <th style="align-items:center; font-size:larger;">
+                    @if (Model.Empresa.Avaliacao == 5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 4.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 4)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 3.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 3)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 2.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 2)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 1.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 1)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 0.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Empresa.Avaliacao == 0)
+                    {
+                        <span></span>
+                    }
+
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.nKm)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.Preco)€
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.Localizacao.Nome)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.Estado)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.anoProducao)
+                </th>
+            </tr>
+        </thead>
+    </table>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Apagar" class="btn btn-danger" onclick="return confirm('Tem a certeza que deseja apagar?')" />
+        <div style="margin-top:1%;">
+            <a class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+        </div>
+    </form>
+</div>

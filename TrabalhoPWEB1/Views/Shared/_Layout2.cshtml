@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Rental4You</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/carousel.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="d-flex h-100 text-center  bg-white p-0 m-0">
+    <div class="cover-container d-flex w-100 h-100 p-0 mx-auto flex-column">
+        <header class="p-7 text-white">
+            <div class="container">
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark mb-3 fixed-top" style="background: rgba(0, 0, 0, .4);">
+                    <div class="container" >
+                        <a class="navbar-brand text-warning" asp-controller="Home" asp-action="Index"><svg bootstrap-icon="CarFrontFill" class="text-warning" width="26" height="26" aria-label="SignTurnRightFill"></svg> <strong>Rental4You</strong></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                                 <li class="nav-item">
+                                     <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">INÍCIO</a>
+                                </li>  
+
+                                @if(!User.IsInRole("Administrador")){
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="Veiculos" asp-action="Index">VEÍCULOS</a>
+                                    </li>
+                                }
+                                
+                               
+                                @if(User.Identity.IsAuthenticated && User.IsInRole("Administrador"))
+                                {                          
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            VEICULOS
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Veiculos" asp-action="Index">Veiculos</a>
+                                            </li>
+
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Categorias" asp-action="Index">Categorias</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="Empresas" asp-action="Index">EMPRESAS</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            UTILIZADORES
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="UserRolesManager" asp-action="Index">Utilizadores</a>
+                                            </li>
+
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="RolesManager" asp-action="Index">Cargos</a>
+                                            </li>
+    
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="Localizacoes" asp-action="Index">LOCALIZAÇÕES</a>
+                                    </li>
+                                }
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Gestor"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="UserRolesManager" asp-action="Index">FUNCIONÁRIOS</a>
+                                    </li>
+                                }
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Gestor") || User.IsInRole("Funcionario"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-area="" asp-controller="Reservas" asp-action="Index">RESERVAS</a>
+                                    </li>
+                                }
+
+                           
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Cliente"))
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a style="color:white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            RESERVAS
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Reservas" asp-action="Index">Todas as Reservas</a>
+                                            </li>
+
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Veiculos" asp-action="Index">Pedido de Reserva</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Reservas" asp-action="MinhasReservas">Minhas Reservas</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                               
+                            </ul>
+                            <partial name="_QuickSearchPartial" />
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+                </nav>                
+            </div>
+        </header>
+
+        <main class="container mt-5 pt-5 text-start">
+            @RenderBody()
+        </main>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2023 - Rental4You - Beatriz Maia - João Santos - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

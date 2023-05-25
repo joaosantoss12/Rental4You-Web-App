@@ -1,0 +1,168 @@
+﻿@model TrabalhoPWEB1.Models.Empresas
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Apagar Empresa</h1>
+<h4>@Html.DisplayFor(model => model.Nome)</h4>
+
+<div>
+    <hr />
+    <table class="table table-light table-striped-columns table-bordered" style="text-align:center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+
+                <th>
+                    Avaliação Empresa
+                </th>
+
+                <th>
+                    Estado Subscrição
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.Nome)
+                </th>
+                <th style="align-items:center; font-size:larger;">
+                    @if (Model.Avaliacao == 5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 4.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 4)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 3.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 3)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 2.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 2)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 1.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 1)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarFill" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 0.5)
+                    {
+                        <span style="color:#EEEE03">
+                            <svg bootstrap-icon="StarHalf" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                            <svg bootstrap-icon="Star" width="18" height="18"></svg>
+                        </span>
+                    }
+                    @if (Model.Avaliacao == 0)
+                    {
+                        <span></span>
+                    }
+
+                </th>
+                <td style="font-size:larger; align-items:center">
+                    @if (Model.EstadoSubscricao == "Válida")
+                    {
+                        @Html.DisplayFor(modelItem => Model.EstadoSubscricao)
+                            <svg style="padding:2px;color:green;" bootstrap-icon="CheckCircleFill" width="22" height="22"></svg>
+                    }
+                    @if (Model.EstadoSubscricao == "Inválida")
+                    {
+                        @Html.DisplayFor(modelItem => Model.EstadoSubscricao)
+                            <svg style="padding:2px;color:red;" bootstrap-icon="XCircleFill" width="22" height="22"></svg>
+                    }
+                </td>
+            </tr>
+        </thead>
+    </table>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Apagar" class="btn btn-danger" onclick="return confirm('Tem a certeza que deseja apagar?')" />
+        <div style="margin-top:1%;">
+            <a class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+        </div>
+    </form>
+</div>

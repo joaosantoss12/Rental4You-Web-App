@@ -1,0 +1,80 @@
+﻿@model IEnumerable<TrabalhoPWEB1.Models.Reservas>
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+<h1>As minhas Reservas</h1>
+
+<p style="margin-top:2%;">
+    <a class="btn btn-success" asp-controller="Veiculos" asp-action="Index">Adicionar nova Reserva</a>
+</p>
+
+<table class="table table-light mt-2 table-striped text-center table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Veículo
+            </th>
+            <th>
+                Data Inicio da Reserva
+            </th>
+            <th>
+                Data Fim da Reserva
+            </th>
+            <th>
+                Preço Reserva
+            </th>
+            <th>
+                Estado Reserva
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.veiculo.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInicioReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFimReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecoReserva)€
+                </td>
+                <td>
+                    @if (item.Estado == "Não Confirmada"){
+                        <svg style="padding:2px;color:red;" bootstrap-icon="XCircleFill" width="22" height="22"></svg>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    }
+                    else{
+                        <svg style="padding:2px;color:green;" bootstrap-icon="CheckCircleFill" width="22" height="22"></svg>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                       
+                    }
+                    
+                </td>
+                <td>
+                    @if (item.veiculoRecebido == true)
+                    {
+                        <button class="btn btn-secondary" disabled>Terminada</button>
+                    }
+                    else{
+                        @if(item.Estado == "Confirmada" && item.veiculoEntregue == true && item.veiculoRecebido != true){
+                            <a class="btn btn-outline-success" asp-action="DevolverVeiculo" asp-route-id="@item.Id">Devolver Veículo</a>
+                        }
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Cancelar</a>
+                    }
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

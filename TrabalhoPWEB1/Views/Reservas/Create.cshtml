@@ -1,0 +1,65 @@
+﻿@model TrabalhoPWEB1.Models.Reservas
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Adicionar uma nova Reserva</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label class="control-label">Data e Hora do Pedido</label>
+                <input value="@Html.DisplayName(DateTime.Now.ToString())" readonly class="form-control"/>
+                <span asp-validation-for="DataHoraDoPedido" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Data e Hora Inicio da Reserva</label>
+                <input asp-for="DataInicioReserva" class="form-control" />
+                <span asp-validation-for="DataInicioReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Data e Hora Fim da Reserva</label>
+                <input asp-for="DataFimReserva" class="form-control" />
+                <span asp-validation-for="DataFimReserva" class="text-danger"></span>
+            </div>
+
+            <!-- <div class="form-group mb-3">
+                <label asp-for="PrecoReserva" class="control-label">Preço da Reserva</label>
+                <input asp-for="PrecoReserva" class="form-control" />
+                <span asp-validation-for="PrecoReserva" class="text-danger"></span>
+                </div> 
+            -->
+            <!--  
+            <div class="form-group">
+                <label asp-for="ApplicationUserId" class="control-label"></label>
+                <select asp-for="ApplicationUserId" class ="form-control" asp-items="ViewBag.ApplicationUserId"></select>
+            </div>
+            -->
+            <div class="form-group" style="margin-top:1%;">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Administrador")){
+    <div style="margin-top:1%;">
+        <a class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+    </div>
+}
+@if (User.Identity.IsAuthenticated && User.IsInRole("Cliente")){
+    <div style="margin-top:1%;">
+        <a class="btn btn-secondary" asp-controller="Veiculos" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+    </div>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,43 @@
+﻿@model TrabalhoPWEB1.Models.Localizacoes
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Apagar Localização</h1>
+<h4>@Html.DisplayFor(model => model.Nome)</h4>
+
+<div>
+    <hr />
+    <table class="table table-light table-striped-columns table-bordered" style="text-align:center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.Nome)
+                </th>
+                
+            </tr>
+        </thead>
+    </table>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Apagar" class="btn btn-danger" onclick="return confirm('Tem a certeza que deseja apagar?')" />
+        <div style="margin-top:1%;">
+            <a class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,58 @@
+﻿@model TrabalhoPWEB1.Models.Reservas
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<h4>Agendamento - Confirmação</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Create">
+            <input type="hidden" asp-for="DuracaoEmHoras" />
+            <input type="hidden" asp-for="DuracaoEmDias" />
+            <input type="hidden" asp-for="PrecoReserva" />
+            <input type="hidden" asp-for="VeiculoId" />
+            <input type="hidden" asp-for="ApplicationUserId" />
+            <input type="hidden" asp-for="veiculoEntregue" />
+            <input type="hidden" asp-for="veiculoRecebido" />
+            <input type="hidden" asp-for="obs" />
+            <input type="hidden" asp-for="emailFuncionario" />
+            <input type="hidden" asp-for="DataInicioReserva" />
+            <input type="hidden" asp-for="DataFimReserva" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Tipo de Aula</label>
+                <input type="text" class="form-control form-control-lg" readonly disabled value="@Model.veiculo.Nome" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicioReserva" class="control-label"></label>
+                <input asp-for="DataInicioReserva" class="form-control" readonly disabled />
+                <span asp-validation-for="DataInicioReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataFimReserva" class="control-label"></label>
+                <input asp-for="DataFimReserva" class="form-control" readonly disabled />
+                <span asp-validation-for="DataFimReserva" class="text-danger"></span>
+            </div>
+
+            <div class="form-group pt-4">
+                <p class="alert alert-info">
+                    Este pedido de reserva tem um custo de  <b>@Model.PrecoReserva</b> Euros.
+                </p>
+            </div>
+            <div class="form-group">
+                <p>Por favor escolha uma das seguintes opções:</p>
+                <input type="submit" value="Confirmar Reserva" class="btn btn-primary" />
+                <a class="btn btn-warning" asp-controller="Reservas" asp-action="Pedido">Cancelar pedido</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

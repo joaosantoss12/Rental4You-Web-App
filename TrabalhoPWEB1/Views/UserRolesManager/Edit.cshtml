@@ -1,0 +1,53 @@
+﻿@model TrabalhoPWEB1.Models.ViewModels.UserRolesViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Editar</h1>
+
+<h4>@Html.DisplayFor(model => model.UserName)</h4>
+<hr />
+
+<form method="post">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="EmpresaId" />
+
+            <div class="form-group mb-3">
+                <label class="control-label form-label">Primeiro Nome</label>
+                <input asp-for="PrimeiroNome" class="form-control" />
+                <span asp-validation-for="PrimeiroNome" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label form-label">Último Nome</label>
+                <input asp-for="UltimoNome" class="form-control" />
+                <span asp-validation-for="UltimoNome" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label form-label">Email</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+  
+            <div class="form-group" style="margin-top:1%;">
+            <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</form>
+
+<div style="margin-top:1%;">
+    <a class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

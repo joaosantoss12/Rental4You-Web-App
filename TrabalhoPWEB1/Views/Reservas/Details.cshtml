@@ -1,0 +1,80 @@
+﻿@model TrabalhoPWEB1.Models.Reservas
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.veiculo.Nome)</h4>
+    <hr />
+    <table class="table table-light table-striped-columns table-bordered" style="text-align:center">
+        <thead>
+            <tr class="table-dark">
+                <th>
+                    Email
+                </th>
+                <th>
+                    Veículo
+                </th>
+                <th>
+                    Primeiro Nome
+                </th>
+                <th>
+                    Último Nome
+                </th>
+                <th>
+                    Data Pedido
+                </th>
+                <th>
+                    Data Inicio Reserva
+                </th>
+                <th>
+                    Data Fim Reserva
+                </th>
+                <th>
+                    Preço
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayFor(model => model.ApplicationUser.Email)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.veiculo.Nome)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.ApplicationUser.PrimeiroNome)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.ApplicationUser.UltimoNome)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.DataHoraDoPedido)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.DataInicioReserva)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.DataFimReserva)
+                </th>
+                <th>
+                    @Html.DisplayFor(model => model.PrecoReserva)€
+                </th>
+            </tr>
+        </thead>
+        </table>
+</div>
+<div>
+    <div style="margin-top:1%;">
+        @if(User.IsInRole("Cliente")){
+            <a class="btn btn-secondary" asp-action="MinhasReservas"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+        }
+        else{
+            <a class="btn btn-secondary" asp-action="Index"><svg bootstrap-icon="ArrowLeft" width="24" height="24"></svg> Voltar atrás</a>
+        }
+        
+    </div>
+</div>

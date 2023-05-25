@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewData["Title"] = "Roles Manager";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Gestão de Cargos</h1>
+
+<p style="margin-top:2%;"></p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="AddRole" asp-controller="RolesManager">
+            <div class="input-group">
+                <input name="roleName" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-warning">Adicionar novo Cargo</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-light table-striped text-center table-bordered mt-4" style="text-align:center">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Cargo
+                </th>
+            <th>
+                ID
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="font-weight:bold">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    <a class="btn btn-danger"
+                   asp-action="Remove"
+                   asp-route-id="@item.Id"
+                   onclick="return confirm('Tem a certeza que deseja apagar?')">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
